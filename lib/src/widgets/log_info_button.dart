@@ -1,19 +1,16 @@
+import 'package:fitness_app/src/models/log_model.dart';
 import 'package:flutter/material.dart';
 
 class LogInfoWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return LogInfoBackground();
-  }
-}
-
-class LogInfoBackground extends StatelessWidget {
+    final LogModel log;
+  const LogInfoWidget(this.log);
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 100,
+      width: 200,
+      height: double.infinity,
       margin: EdgeInsets.all(20.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: <Color>[
@@ -28,6 +25,14 @@ class LogInfoBackground extends StatelessWidget {
             offset: Offset(4, 6),
             blurRadius: (10.0),
           ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Text(log.exercise),
+          Text(log.reps.toString()),
+          Text(log.sets.toString()),
+          Text(log.datetime),
         ],
       ),
     );

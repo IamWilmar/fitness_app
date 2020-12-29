@@ -1,11 +1,13 @@
+import 'package:fitness_app/src/provider/log_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FloatingActionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
       direction: Axis.vertical,
-      spacing: 10.0,
+      spacing: 30.0,
       children: [
         FloatingActionItem(Icons.add),
         FloatingActionItem(Icons.edit),
@@ -20,6 +22,7 @@ class FloatingActionItem extends StatelessWidget {
   const FloatingActionItem(this.iconItem);
   @override
   Widget build(BuildContext context) {
+    final logProvider = Provider.of<LogProvider>(context, listen: true);
     return FloatingActionButton(
       backgroundColor: Color(0xFF777BA6),
       child: Container(
@@ -36,7 +39,9 @@ class FloatingActionItem extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        logProvider.newLog("Pierna",4, 2, "28/12/2020");
+      },
     );
   }
 }
