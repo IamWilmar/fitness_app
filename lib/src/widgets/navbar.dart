@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fitness_app/src/provider/bottombar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,14 +13,15 @@ class BottomNavBar extends StatelessWidget {
       onTap: (i) {
         navBar.pagesIndex = i;
       },
+      type: BottomNavigationBarType.shifting,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(
-        color: Color(0xFF777BA6),
+        color: Color(0xFFffffff),
         size: 37.0,
       ),
       unselectedIconTheme: IconThemeData(
-        color: Color(0xFF858585),
+        color: Color(0xFFffffff),
         size: 30.0,
       ),
       items: [
@@ -54,8 +57,8 @@ class NavBarIconShader extends StatelessWidget {
           center: Alignment.topLeft,
           radius: 0.5,
           colors: <Color>[
-            Color(0xFFADB0FF),
-            Color(0xFFFCD6FF),
+            Color(0xFF7075FF),
+            Color(0xFF999CFF),
           ],
           tileMode: TileMode.mirror,
         ).createShader(bounds);

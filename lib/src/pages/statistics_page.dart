@@ -8,7 +8,7 @@ class StatisticsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber,
       body: Center(
-        child: Text('statistics'),
+        child: Text('stadistics', style: TextStyle(fontSize: 30),),
      ),
    );
   }

@@ -9,14 +9,19 @@ class LogManagerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logListProvider = Provider.of<LogProvider>(context);
     final logs = logListProvider.logList;
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            DataVisual(),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(right:90.0),
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: Column(
+        children: [
+          DataVisual(),
+          Expanded(
+            child: Container(
+              //margin: EdgeInsets.only(right:90.0),
+              child: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overscroll){
+                  overscroll.disallowGlow();
+                  return;
+                },
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: logListProvider.logList.length,
@@ -24,11 +29,11 @@ class LogManagerPage extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        floatingActionButton: FloatingActionBar(),
+          ),
+        ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionItem(Icons.add),
     );
   }
 }
